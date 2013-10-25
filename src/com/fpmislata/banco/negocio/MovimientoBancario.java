@@ -19,6 +19,9 @@ public class MovimientoBancario {
 	private BigDecimal saldoTotal;
 	private String concepto;
 
+    public MovimientoBancario() {
+    }
+
     public MovimientoBancario(int idMovimientoBancario, TipoMovimientoBancario tipoMovimientoBancario, BigDecimal importe, String fecha, BigDecimal saldoTotal, String concepto) {
         this.idMovimientoBancario = idMovimientoBancario;
         this.tipoMovimientoBancario = tipoMovimientoBancario;

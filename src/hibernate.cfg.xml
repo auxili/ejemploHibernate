@@ -8,10 +8,6 @@
         <property name="connection.password">alumno</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.show_sql">true</property>
-        <mapping resource="com.fpmislata.banco.datos.hibernate/EntidadBancaria.hbm.xml"/>
+        <mapping resource="com/fpmislata/banco/datos/hibernate/EntidadBancaria.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
-
-<root>
-    
-</root>

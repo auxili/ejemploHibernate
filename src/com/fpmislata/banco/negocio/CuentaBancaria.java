@@ -23,6 +23,9 @@ public class CuentaBancaria {
 	private String cif;
         private List<MovimientoBancario> movimientoBancarios = new ArrayList();
 
+    public CuentaBancaria() {
+    }
+
     public CuentaBancaria(int idCuentaBancaria, SucursalBancaria sucursalBancaria, String numeroCuenta, String dc, BigDecimal saldo, String cif) {
         this.idCuentaBancaria = idCuentaBancaria;
         this.sucursalBancaria = sucursalBancaria;

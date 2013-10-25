@@ -22,6 +22,10 @@ public class EntidadBancaria implements Serializable{
 	private TipoEntidadBancaria tipoEntidadBancaria;
         private List<SucursalBancaria> sucursalBancaria= new ArrayList();
 
+    public EntidadBancaria() {
+    }
+
+        
     public EntidadBancaria(int idEntidad, String codigoEntidad, String nombre, String cif, TipoEntidadBancaria tipoEntidadBancaria) {
         this.idEntidad = idEntidad;
         this.codigoEntidad = codigoEntidad;

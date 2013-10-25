@@ -18,6 +18,9 @@ public class SucursalBancaria {
 	private String nombre;
         private List<CuentaBancaria> cuentaBancaria = new ArrayList();
 
+    public SucursalBancaria() {
+    }
+
     public SucursalBancaria(int idSucursalBancaria, EntidadBancaria entidadBancaria, int codigoSucursal, String nombre) {
         this.idSucursalBancaria = idSucursalBancaria;
         this.entidadBancaria = entidadBancaria;
