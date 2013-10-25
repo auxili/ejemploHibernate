@@ -4,9 +4,10 @@
  */
 package com.fpmislata.banco.datos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface GenericDAO <T, ID>{ 
+public interface GenericDAO <T, ID extends Serializable>{ 
     public T read(ID id);
     public void insert (T t);    
     public void update (T t);

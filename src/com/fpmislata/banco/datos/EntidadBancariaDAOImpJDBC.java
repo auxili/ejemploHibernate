@@ -13,13 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author alumno
- */
-
-/*DUDA: el connectionFactory se hace para crear una NUEVA conectionFActoryImpDataSource o 
- una NUEVA EntidadBancariaDAOImpJDBC ????????????????????????????????*/
 public class EntidadBancariaDAOImpJDBC implements EntidadBancariaDAO {
 
     //abstract Connection getConnection();// cómo conectamos???
