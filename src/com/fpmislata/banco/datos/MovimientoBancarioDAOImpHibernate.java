@@ -13,8 +13,8 @@ import org.hibernate.SessionFactory;
  */
 public class MovimientoBancarioDAOImpHibernate extends GenericDAOImplHibernate<MovimientoBancario, Integer> implements MovimientoBancarioDAO{
 
-    public MovimientoBancarioDAOImpHibernate(SessionFactory sessionFactory) {
+   /* public MovimientoBancarioDAOImpHibernate(SessionFactory sessionFactory) {
         super(sessionFactory);
-    }
+    }*/
     
 }

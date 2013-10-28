@@ -14,18 +14,19 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
     public void delete (ID id);
     public List<T> findAll();*/
     
-    
-    private SessionFactory sessionFactory;
+   
+    SessionFactory sessionFactory;
 
-    public GenericDAOImplHibernate(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public GenericDAOImplHibernate(/*SessionFactory sessionFactory*/) {
+        this.sessionFactory = HibernateUtil.getSessionFactory();
 
     }
 
     //READ
     @Override
     public T read(ID id) {
-        Session session = sessionFactory.openSession();
+       /*Session session = sessionFactory.openSession();*/
+        Session session = sessionFactory.getCurrentSession();
         T t;
         try {
             session.beginTransaction();
@@ -36,7 +37,10 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
             throw new RuntimeException(ex);
         }finally {
             if ((session!=null) && (session.isConnected()==true)) {
-                session.close();
+                /*Y NO CERRAMOS LAS SESIONES porque sino no podemos hacer una
+                 carga perezosa
+                 */
+                /*session.close();*/
             }
         }
         return t;
@@ -45,7 +49,8 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
 
     @Override
     public void update(T t) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
+  
         try {
             session.beginTransaction();
             session.update(t);
@@ -55,14 +60,14 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
             throw new RuntimeException(ex);
         }finally {
             if ((session!=null) && (session.isConnected()==true)) {
-                session.close();
+                
             }
         }
     }
     @Override
     public void delete(ID id) {
         //DELETE
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         T t;
         try {
             session.beginTransaction();
@@ -74,14 +79,14 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
             throw new RuntimeException(ex);
         }finally {
             if ((session!=null) && (session.isConnected()==true)) {
-                session.close();
+              
             }
         }
     }
 
     @Override
     public void insert(T t) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         //SAVE: hace como un insert
         try {
             session.beginTransaction();
@@ -92,36 +97,19 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
             throw new RuntimeException(ex);
         } finally {
             if ((session!=null) && (session.isConnected()==true)) {
-                session.close();
+                
             }
         }
     }
 
 
-    public List<T> findByCodigo(String Codigo) {
-        Session session = sessionFactory.openSession();
-        Query query = session.createQuery("SELECT entidadBancaria FROM EntidadBancaria entidadBancaria WHERE idEntidadBancaria = ?");
-        query.setString(0, Codigo);
-        List list = query.list();
-        session.close();
-        return list;
-    }
 
-
-    public List<T> findByNombre(String letraNombre) {
-        Session session = sessionFactory.openSession();
-        Query query = session.createQuery("SELECT entidadBancaria FROM EntidadBancaria entidadBancaria WHERE nombre like ?");
-        query.setString(0, "%"+letraNombre+"%");
-        List list = query.list();
-        session.close();
-        return list;
-    }
 
     @Override
     public List<T> findAll() {
         //Esto ya no es SQL es HQL (Hibernate)
-        Session session = sessionFactory.openSession();
-        Query query = session.createQuery("SELECT entidadBancaria FROM EntidadBancaria entidadBancaria");
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("SELECT t FROM "+getEntityClass().getName()+" t ");
         List list = query.list();
         session.close();
         return list;

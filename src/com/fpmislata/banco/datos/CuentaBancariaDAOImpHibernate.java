@@ -13,9 +13,9 @@ import org.hibernate.SessionFactory;
  */
 public class CuentaBancariaDAOImpHibernate extends GenericDAOImplHibernate<CuentaBancaria, Integer> implements CuentaBancariaDAO{
 
-    public CuentaBancariaDAOImpHibernate(SessionFactory sessionFactory) {
+   /* public CuentaBancariaDAOImpHibernate(SessionFactory sessionFactory) {
         super(sessionFactory);
-    }
+    }*/
     
     
 }

@@ -9,8 +9,8 @@ import org.hibernate.SessionFactory;
  */
 public class SucursalBancariaDAOImpHibernate extends GenericDAOImplHibernate<SucursalBancaria, Integer> implements SucursalBancariaDAO{
 
-    public SucursalBancariaDAOImpHibernate(SessionFactory sessionFactory) {
+  /*  public SucursalBancariaDAOImpHibernate(SessionFactory sessionFactory) {
         super(sessionFactory);
-    }
+    }*/
     
 }
